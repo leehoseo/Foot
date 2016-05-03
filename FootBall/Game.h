@@ -3,20 +3,26 @@
 #include "Stage.h"
 #include "Screen.h"
 #include "GoalPost.h"
+#include "Player.h"
+#include "Ball.h"
 #include <time.h>
 
 class Game
 {
 private:
 	Stage * m_pStage;
-	Screen * m_pScreen;
 	GoalPost * m_pGoalPost;
-
-	GAME_STATE m_eGameStage;
+	Player * m_pPlayer;
+	Ball * m_pBall;
+	GAME_STATE m_eGameState;
 	clock_t m_LimitTime;
 	clock_t m_UpdateOldTime;
 	clock_t m_curTime;
 	clock_t m_GameStartTime;
+
+	clock_t m_StayTime;
+	clock_t m_StartTime;
+
 	int m_nGoalBallCount;
 	int m_nGoal;
 	int m_nBallCount;
@@ -30,7 +36,14 @@ public:
 	void Render();
 	// GameEntity 들을 Update시킨다
 	void Update();
-	void InputKey();
 	void Initialize();
+	void UpdateScene();
+	void RenderScene();
+	int InputKey();
+	void MessageHandler();
+	void ChangeStage(Stage* _newStage);
+	void PlusGoalBallCount(int _num) { m_nGoalBallCount += _num; }
+
+	void CollisionCheckBall_GP();
 };
 

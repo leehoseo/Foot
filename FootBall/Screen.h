@@ -4,15 +4,14 @@ class Stage;
 
 class Screen
 {
-public:
-	Screen();
-	~Screen();
 
 private:
 	void* m_hscreen[2];
 	int m_nscreenIndex;
-
+	Screen();
 public:
+	~Screen();
+	static Screen * Instance();
 	// x , y 좌표에 문자열 출력
 	void ScreenPrint(int _x, int _y, char* _string);
 	// Screen 초기화

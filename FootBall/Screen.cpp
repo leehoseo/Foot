@@ -16,6 +16,12 @@ Screen::~Screen()
 	ScreenRelease();
 }
 
+Screen * Screen::Instance()
+{
+	static Screen instance;
+	return &instance;
+}
+
 // Screen √ ±‚»≠
 void Screen::ScreenInit()
 {

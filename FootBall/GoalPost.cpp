@@ -11,9 +11,8 @@ GoalPost::~GoalPost()
 {
 }
 
-void GoalPost::Initialize(const Stage & _stageInfo, Screen& _screen)
+void GoalPost::Initialize(const Stage & _stageInfo)
 {
-	m_pScreen = &_screen;
 	m_nX = _stageInfo.GetResetGPX();
 	m_nY = _stageInfo.GetResetGPY();
 	m_nLength = _stageInfo.GetGPLength();
@@ -37,12 +36,12 @@ void GoalPost::Update()
 
 void GoalPost::Render()
 {
-	m_pScreen->ScreenPrint(m_nX, m_nY, "¡à");
+	Screen::Instance()->ScreenPrint(m_nX, m_nY, "¡à");
 
 	for (int index = 0; index < m_nMaxLength; index++)
-		m_pScreen->ScreenPrint(m_nArrLineX[index], m_nY, "¦¬");
+		Screen::Instance()->ScreenPrint(m_nArrLineX[index], m_nY, "¦¬");
 
-	m_pScreen->ScreenPrint(m_nArrLineX[m_nMaxLength - 1 ] + 2, m_nY, "¡à");
+	Screen::Instance()->ScreenPrint(m_nArrLineX[m_nMaxLength - 1 ] + 2, m_nY, "¡à");
 }
 
 void GoalPost::MoveGoalPost(clock_t _time)
